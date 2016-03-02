@@ -2,7 +2,7 @@
 nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
 nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
 " Move between tabs
-nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Left> :tabprevious<CR> 
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <A-Left> <C-W>h
 nnoremap <A-Right> <C-W>l
@@ -11,6 +11,12 @@ nnoremap <A-Down> <C-W>j
 " F8 show all buffers
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+" NERD commenter
+"nnoremap [count]<leader>ci "Toggles the comment state of the selected line(s) individually.
+"nnoremap [count]<leader>cy "Same as cc except that the commented line(s) are yanked first.
+"nnoremap <leader>c$ "Comments the current line from the cursor to the end of line.
+"nnoremap <leader>cA "Adds comment delimiters to the end of line and goes into insert mode between them.
 
 " Pathogen configuration
 call pathogen#runtime_append_all_bundles()
@@ -25,7 +31,10 @@ noremap <leader>m <Esc>:CommandTBuffer<CR>
 let g:tagbar_usearrows = 1
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <leader>l :TagbarToggle<CR>
-nnoremap <leader>j :TagbarOpen j<CR>
+
+" Tag close only for the files that it works
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
 " Autocompletion settings
 let g:SuperTabDefaultCompletionType = "context"
