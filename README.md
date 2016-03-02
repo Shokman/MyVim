@@ -23,6 +23,16 @@ http://www.worldtimzone.com/res/vi.html
 
 There is many plugins used, each of them is included as a submodule.
 
+Most of them are assigned to F keys
+
+- `F2`: launch snippets
+- `F3`: show/hide NERD tree
+- `F4`: enable/disable white space visualization
+- `F5`: show/hide undo tree
+- `F6`: show/hide tagbar
+- `F7`: check syntaxes for python
+- `F8`: show all buffers
+
 ### Closetag
 Automatically closes a HTML or XML tag, usefull for several ROS configuration files based on xml.
 
@@ -56,7 +66,6 @@ Show tree files
 
 https://github.com/scrooloose/nerdtree.git
 
-- Show/hide using `C^T`
 - Open file in tab ising again T
 - Press enter to open other file
 
@@ -84,8 +93,6 @@ https://github.com/honza/vim-snippets.git
 
 ### Better whitespace
 Mark trailing whitespace
-
-To enable/disable use `\ + W`.
 
 https://github.com/ntpeters/vim-better-whitespace
 

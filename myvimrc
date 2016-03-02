@@ -2,12 +2,12 @@
 nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
 nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
 " Move between tabs
-nnoremap <C-Left> :tabprevious<CR> 
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <A-Left> <C-W>h
-nnoremap <A-Right> <C-W>l
-nnoremap <A-Up> <C-W>k
-nnoremap <A-Down> <C-W>j
+nnoremap <C-Left> <ESC>:tabprevious<CR> 
+nnoremap <C-Right> <ESC>:tabnext<CR>
+nnoremap <A-Left> <ESC><C-W>h
+nnoremap <A-Right> <ESC><C-W>l
+nnoremap <A-Up> <ESC><C-W>k
+nnoremap <A-Down> <ESC><C-W>j
 " F8 show all buffers
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
@@ -18,13 +18,27 @@ call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 syntax on
 filetype plugin indent on
 
-"Better whitespace disable/enable
-noremap <leader>w <ESC>:ToggleWhitespace<CR>
-
 "Snipets settings
-let g:UltiSnipsExpandTrigger="<C^`>"
+let g:UltiSnipsExpandTrigger="<F2>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" NERD tree
+map <F3> <ESC>:NERDTreeToggle<CR>
+" NERD Tree appears if no file was especified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"Better whitespace disable/enable
+noremap <F4> <ESC>:ToggleWhitespace<CR>
+
+"Undotree
+nnoremap <F5> <ESC>:UndotreeToggle<CR>
+
+" Tagbar settings
+let g:tagbar_usearrows = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+nnoremap <F6> <ESC>:TagbarToggle<CR>
 
 " NERD commenter
 "nnoremap [count]<leader>ci "Toggles the comment state of the selected line(s) individually.
@@ -37,17 +51,8 @@ noremap <leader>o <Esc>:CommandT<CR>
 noremap <leader>O <Esc>:CommandTFlush<CR>
 noremap <leader>m <Esc>:CommandTBuffer<CR>
 
-" Tagbar settings
-let g:tagbar_usearrows = 1
-autocmd VimEnter * nested :call tagbar#autoopen(1)
-nnoremap <leader>l :TagbarToggle<CR>
-
 " Tag close only for the files that it works
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
-" NERD tree
-map <C-t> <ESC>:NERDTreeToggle<CR>
-" NERD Tree appears if no file was especified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
