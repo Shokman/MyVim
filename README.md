@@ -48,10 +48,12 @@ https://github.com/scrooloose/nerdtree.git
 
 https://github.com/scrooloose/nerdtree
 
-## Pyflakes
+## Flake8
 Indent and format control for Python
 
-http://github.com/kevinw/pyflakes-vim
+Press F7 for format and syntax review.
+
+https://github.com/nvie/vim-flake8
 
 ## Supertab  
 Auto complete function, just press type while writing.
