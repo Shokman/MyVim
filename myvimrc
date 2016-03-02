@@ -1,11 +1,37 @@
+" Tabs configuration
+nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
+nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
+" Move between tabs
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <A-Left> <C-W>h
+nnoremap <A-Right> <C-W>l
+nnoremap <A-Up> <C-W>k
+nnoremap <A-Down> <C-W>j
+" F8 show all buffers
+let notabs = 0
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+" Pathogen configuration
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" CommandT settings
 noremap <leader>o <Esc>:CommandT<CR>
 noremap <leader>O <Esc>:CommandTFlush<CR>
 noremap <leader>m <Esc>:CommandTBuffer<CR>
 
+" Tagbar settings
 let g:tagbar_usearrows = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <leader>l :TagbarToggle<CR>
+nnoremap <leader>j :TagbarOpen j<CR>
 
+" Autocompletion settings
 let g:SuperTabDefaultCompletionType = "context"
+
+" NERD tree
+map <C-t> <ESC>:NERDTreeToggle<CR>
+" NERD Tree appears if no file was especified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
