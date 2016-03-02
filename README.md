@@ -1,3 +1,7 @@
+#MyVim
+
+Inspired by [this](http://mirnazim.org/writings/vim-plugins-i-use/) article I decided to make a vim configuration which is really fast to maintain, have some documentation and fast to deploy to all my computers. 
+
 
 ## Tab shortcuts
 
@@ -55,10 +59,16 @@ Press F7 for format and syntax review.
 
 https://github.com/nvie/vim-flake8
 
-## Supertab  
+## YouCompeteMe 
 Auto complete function, just press type while writing.
 
-https://github.com/ervandew/supertab
+https://valloric.github.io/YouCompleteMe/
+
+## Snippets
+Allows to add small parts of code (snippets)
+Includes snipMate and UltiSnip formats
+
+https://github.com/honza/vim-snippets.git
 
 ## Tagbar
 Show file's tags and allow to jump between to them. 
