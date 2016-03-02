@@ -18,6 +18,9 @@ call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 syntax on
 filetype plugin indent on
 
+"Better whitespace disable/enable
+noremap <leader>w <ESC>:ToggleWhitespace<CR>
+
 "Snipets settings
 let g:UltiSnipsExpandTrigger="<C^`>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
