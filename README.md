@@ -6,6 +6,11 @@ Inspired by [this](http://mirnazim.org/writings/vim-plugins-i-use/) article I de
 
 Just clon this into your home, backup your old .vimrc file and .vim folder, then rename the cloned folder to .vim and execute install script.
 
+TODO:
+- Get snippets working
+- Document Fugitive, NERD comment
+- Analize to keep or not closetag (test it), Delimitmate (YCM already does that?), Command-t (I don't get it)
+
 ## Tab shortcuts
 
 Default remainder:
