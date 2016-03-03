@@ -4,7 +4,7 @@ Inspired by [this](http://mirnazim.org/writings/vim-plugins-i-use/) article I de
 
 ## Installation
 
-Just clon this into your home, backup your old .vimrc file and .vim folder, then rename the cloned folder to .vim and execute install script. Backup your .vimrc file if you have your own settings, this is going to overwrite it!!
+Just clone this into your home, backup your old .vimrc file and .vim folder, then rename the cloned folder to .vim and execute install script. Backup your .vimrc file if you have your own settings, this is going to overwrite it!! Also, YouCompleteMe might take a while to compile (10 min.).
 
 TODO:
 - Get snippets working
