@@ -17,6 +17,9 @@ set shiftwidth=2  " Two space indents
 set tabstop=2     " Tab key indents two spaces at a time
 set expandtab     " Use spaces when the <Tab> key is pressed
 
+" Toggle line numbers
+nmap <leader>n :set invnumber<CR>
+
 " Pathogen configuration
 call pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in 'runtimepath'
