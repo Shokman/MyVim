@@ -46,10 +46,7 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <F6> <ESC>:TagbarToggle<CR>
 
 " NERD commenter
-nmap <leader>[ :TComment<CR>
-nmap <leader>] :TCommentBlock<CR>
-vmap <leader>[ :TComment<CR>
-vmap <leader>] :TCommentBlock<CR>
+nmap <leader>[ <ESC><leader>cA
 
 " CommandT settings
 noremap <leader>o <Esc>:CommandT<CR>
@@ -99,6 +96,6 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
 hi IndentGuidesOdd  ctermbg=darkgrey
-"hi IndentGuidesEven ctermbg=lightgrey
+hi IndentGuidesEven ctermbg=darkgrey
 
 
