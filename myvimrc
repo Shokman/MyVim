@@ -45,9 +45,6 @@ let g:tagbar_usearrows = 1
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <F6> <ESC>:TagbarToggle<CR>
 
-" NERD commenter
-nmap <leader>[ <ESC><leader>cA
-
 " CommandT settings
 noremap <leader>o <Esc>:CommandT<CR>
 noremap <leader>O <Esc>:CommandTFlush<CR>
