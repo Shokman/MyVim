@@ -12,6 +12,11 @@ nnoremap <A-Down> <ESC><C-W>j
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
+"Define ROS rules
+set shiftwidth=2  " Two space indents
+set tabstop=2     " Tab key indents two spaces at a time
+set expandtab     " Use spaces when the <Tab> key is pressed
+
 " Pathogen configuration
 call pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in 'runtimepath'
@@ -41,10 +46,10 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <F6> <ESC>:TagbarToggle<CR>
 
 " NERD commenter
-"nnoremap [count]<leader>ci "Toggles the comment state of the selected line(s) individually.
-"nnoremap [count]<leader>cy "Same as cc except that the commented line(s) are yanked first.
-"nnoremap <leader>c$ "Comments the current line from the cursor to the end of line.
-"nnoremap <leader>cA "Adds comment delimiters to the end of line and goes into insert mode between them.
+nmap <leader>[ :TComment<CR>
+nmap <leader>] :TCommentBlock<CR>
+vmap <leader>[ :TComment<CR>
+vmap <leader>] :TCommentBlock<CR>
 
 " CommandT settings
 noremap <leader>o <Esc>:CommandT<CR>
@@ -54,5 +59,46 @@ noremap <leader>m <Esc>:CommandTBuffer<CR>
 " Tag close only for the files that it works
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
+let g:ycm_register_as_syntastic_checker = 1 "default 1
+let g:Show_diagnostics_ui = 1 "default 1
+
+"YouCompleteMe settings
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_always_populate_location_list = 1 "default 0
+let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+
+let g:ycm_complete_in_strings = 1 "default 1
+let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
+let g:ycm_path_to_python_interpreter = '' "default ''
+
+let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
+let g:ycm_server_log_level = 'info' "default info
+
+let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+"Define syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <F9> <F9>:SyntasticToggleMode<CR> :SyntasticToggleMode<CR>
+
+"Indent guides color
+colorscheme default
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+hi IndentGuidesOdd  ctermbg=darkgrey
+"hi IndentGuidesEven ctermbg=lightgrey
 
 
