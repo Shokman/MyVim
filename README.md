@@ -66,10 +66,12 @@ Git wrapper, allows to use git function in vim
 
 https://github.com/tpope/vim-fugitive
 
-### Nerdcommenter
+### T Comment
 Handle comments
 
-https://github.com/scrooloose/nerdcommenter
+- `gc`: Toggle comments in current line. (Works in visual mode with several lines)
+
+https://github.com/tomtom/tcomment_vim
 
 ### Nerdtree
 Show tree files
