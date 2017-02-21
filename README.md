@@ -1,6 +1,6 @@
 #MyVim
 
-Inspired by [this](http://mirnazim.org/writings/vim-plugins-i-use/) article I decided to make a vim configuration which is really fast to maintain, have some documentation and fast to deploy to all my computers. 
+Inspired by [this](http://mirnazim.org/writings/vim-plugins-i-use/) article I decided to make a vim configuration which is really fast to maintain, have some documentation and fast to deploy to all my computers.
 
 ## Installation
 
@@ -10,8 +10,8 @@ TODO:
 - Get snippets working
 - Document Fugitive, NERD comment
 - Analize to keep or not:
-          - closetag (test it), 
-          - Delimitmate (YCM already does that?), 
+          - closetag (test it),
+          - Delimitmate (YCM already does that?),
           - Command-t (I don't get it, honestly)
 
 ## Tab shortcuts
@@ -20,6 +20,7 @@ Default remainder:
 - `:e`: Open file in new tab
 - `C^W + v`: Splits vertical the screen.
 - `C^W + s`: Splits horizontally the screen.
+- Use Tab key to switch tabs easily
 
 Added switching tabs `C^Leftt` and `C^Right`.
 Added jumping into screen division using Alt key and arrows
@@ -35,7 +36,7 @@ Most of them are assigned to F keys
 
 - `F2`: launch snippets
 - `F3`: show/hide NERD tree
-- `F4`: enable/disable white space visualization
+- `F4`: remove trailing whitespaces
 - `F5`: show/hide undo tree
 - `F6`: show/hide tagbar
 - `F7`: check syntaxes for python
@@ -44,7 +45,7 @@ Most of them are assigned to F keys
 ### Closetag
 Automatically closes a HTML or XML tag, usefull for several ROS configuration files based on xml.
 
-Hitting `C^_` will initiate a search for the most recent open tag above that is not closed in the intervening space and then insert the matching close tag at the cursor. 
+Hitting `C^_` will initiate a search for the most recent open tag above that is not closed in the intervening space and then insert the matching close tag at the cursor.
 
 http://github.com/docunext/closetag.vim
 
@@ -87,6 +88,16 @@ Indent and format control for Python
 Press F7 for format and syntax review.
 
 https://github.com/nvie/vim-flake8
+
+### indentpython.vim
+Automatically indent the code for automatic compliant with pep8 standard
+
+https://github.com/vim-scripts/indentpython.vim
+
+### SimpylFold
+Improves folding code visualization for python files.
+
+https://github.com/tmhedberg/SimpylFold
 
 ### YouCompeteMe
 Auto complete function, just press type while writing. Includes Jedi for python autocomplete and Clang based autocompletion support.

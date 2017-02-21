@@ -46,3 +46,9 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "indentpython.vim"]
+	path = indentpython.vim
+	url = https://github.com/vim-scripts/indentpython.vim.git
+[submodule "bundle/SimpylFold"]
+	path = bundle/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git

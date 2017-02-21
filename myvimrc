@@ -2,12 +2,13 @@
 nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
 nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
 " Move between tabs
-nnoremap <C-Left> <ESC>:tabprevious<CR> 
+nnoremap <C-Left> <ESC>:tabprevious<CR>
 nnoremap <C-Right> <ESC>:tabnext<CR>
 nnoremap <A-Left> <ESC><C-W>h
 nnoremap <A-Right> <ESC><C-W>l
 nnoremap <A-Up> <ESC><C-W>k
 nnoremap <A-Down> <ESC><C-W>j
+map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
 " F8 show all buffers
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
@@ -42,6 +43,31 @@ noremap <F4> <ESC>:ToggleWhitespace<CR>
 
 "Undotree
 nnoremap <F5> <ESC>:UndotreeToggle<CR>
+
+"Python rules
+"UTF-8
+set encoding=utf-8
+"Enable folding
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
+" Pep8 format configuration
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Remove trailing spaces
+nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+command! Q  quit
+command! W  write
+command! Wq wq
 
 " Tagbar settings
 let g:tagbar_usearrows = 1
@@ -81,6 +107,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+syntax enable
+syntax on
+let python_highlight_all=1
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -89,13 +119,26 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <F9> <F9>:SyntasticToggleMode<CR> :SyntasticToggleMode<CR>
 
+
 "Indent guides color
 colorscheme default
-let g:indent_guides_auto_colors = 0
+let g:indent_guides_auto_colors = 1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
 hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=darkgrey
 
-
+highlight link Flake8_Error SpellCap
+highlight link Flake8_Warning SpellCap
+highlight Flake8_Complexity ctermfg=white ctermbg=DarkRed
+highlight Flake8_Naming ctermfg=white ctermbg=DarkRed
+highlight Flake8_PyFlake ctermfg=white ctermbg=DarkRed
+"Search hightlight 
+hi Search guibg=peru guifg=wheat
+hi Search cterm=NONE ctermfg=DarkYellow ctermbg=DarkBlue
+"Syntastic highlight
+highlight SyntasticError ctermfg=DarkBlue ctermbg=DarkRed
+highlight SyntasticWarning ctermfg=DarkBlue ctermbg=DarkYellow
+highlight SyntasticStyleError ctermfg=white ctermbg=DarkRed
+highlight SyntasticStyleWarning ctermfg=cyan ctermbg=DarkYellow
