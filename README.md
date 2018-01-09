@@ -96,6 +96,19 @@ Automatically indent the code for automatic compliant with pep8 standard
 
 https://github.com/vim-scripts/indentpython.vim
 
+### Indent guides
+
+Visually displays indent levels in vim
+
+https://github.com/nathanaelkane/vim-indent-guides
+
+Commands:
+```
+:IndentGuidesEnable
+:IndentGuidesDisable
+:IndentGuidesToggle
+```
+
 ### SimpylFold
 Improves folding code visualization for python files.
 
