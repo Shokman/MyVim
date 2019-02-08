@@ -1,0 +1,82 @@
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/seoul256.vim'
+
+Plug 'nanotech/jellybeans.vim' 		" Color scheme 
+Plug 'itchyny/lightline.vim' 		" Improve vim status bottom line
+Plug 'nathanaelkane/vim-indent-guides'	" Indentation visual help
+
+Plug 'scrooloose/nerdcommenter' 	" Comment/uncomment code easily
+Plug 'terryma/vim-multiple-cursors' 	" Allows to use multiple cursors
+Plug 'tpope/vim-surround' 		" Autocomplete open/closing keys, brackes, tags
+
+Plug 'w0rp/ale'				" Linter and autocomplete while typing
+
+Plug 'scrooloose/nerdtree' 		" Files bar
+Plug 'majutsushi/tagbar' 		" Bar with functions, classes, variables, etc
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' 		" Quick file search
+Plug 'tpope/vim-eunuch' 		" Allow to use some commands on the current buffer
+
+Plug 'tpope/vim-fugitive' 		" Git commands
+Plug 'mhinz/vim-signify' 		" Version software helper
+
+Plug 'vim-scripts/Conque-GDB'		" Integrate vim with gdb
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+" Use jellybeans colorscheme
+colorscheme jellybeans
+
+" Tabs configuration
+nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
+nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
+
+" Move between tabs
+nnoremap <C-Left> <ESC>:tabprevious<CR>
+nnoremap <C-Right> <ESC>:tabnext<CR>
+nnoremap <A-Left> <ESC><C-W>h
+nnoremap <A-Right> <ESC><C-W>l
+nnoremap <A-Up> <ESC><C-W>k
+nnoremap <A-Down> <ESC><C-W>j
+map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
+" F8 show all buffers
+let notabs = 0
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+" Toggle line numbers
+nmap <leader>n :set invnumber<CR>
+
+" NERD tree
+map <F3> <ESC>:NERDTreeToggle<CR>
+" NERD Tree appears if no file was especified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Remove trailing spaces
+nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+command! Q  quit
+command! W  write
+command! Wq wq
+
+" Tagbar settings
+let g:tagbar_usearrows = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+nnoremap <F6> <ESC>:TagbarToggle<CR>
+
+"Indent guides color
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+
+" ConqueGDB settings
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
