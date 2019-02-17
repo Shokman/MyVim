@@ -70,6 +70,11 @@ let g:tagbar_usearrows = 1
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <F6> <ESC>:TagbarToggle<CR>
 
+"Define ROS rules
+set shiftwidth=2  " Two space indents
+set tabstop=2     " Tab key indents two spaces at a time
+set expandtab     " Use spaces when the <Tab> key is pressed
+
 "Indent guides color
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_enable_on_vim_startup=1
