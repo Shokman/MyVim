@@ -46,7 +46,6 @@ nnoremap <A-Left> <ESC><C-W>h
 nnoremap <A-Right> <ESC><C-W>l
 nnoremap <A-Up> <ESC><C-W>k
 nnoremap <A-Down> <ESC><C-W>j
-map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
 " F8 show all buffers
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
