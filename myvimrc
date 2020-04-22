@@ -1,6 +1,42 @@
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/seoul256.vim'
+
+Plug 'nanotech/jellybeans.vim' 		      " Color scheme 
+Plug 'itchyny/lightline.vim' 		        " Improve vim status bottom line
+Plug 'nathanaelkane/vim-indent-guides'	" Indentation visual help
+
+Plug 'scrooloose/nerdcommenter' 	      " Comment/uncomment code easily
+Plug 'terryma/vim-multiple-cursors' 	  " Allows to use multiple cursors
+Plug 'tpope/vim-surround' 		          " Autocomplete open/closing keys, brackes, tags
+
+Plug 'w0rp/ale'				                  " Linter and autocomplete while typing
+
+Plug 'scrooloose/nerdtree' 		          " Files bar
+Plug 'majutsushi/tagbar' 		            " Bar with functions, classes, variables, etc
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' 		            " Quick file search
+Plug 'tpope/vim-eunuch' 		            " Allow to use some commands on the current buffer
+
+Plug 'tpope/vim-fugitive' 		          " Git commands
+Plug 'mhinz/vim-signify' 		            " Version software helper
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of completion
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+" Use jellybeans colorscheme
+colorscheme jellybeans
+
 " Tabs configuration
 nnoremap <leader>tc <ESC>:tabclose<CR> "close current tab
 nnoremap <leader>tco <ESC>:tabonly<CR> "close all other tabs (show only the current tab)
+
 " Move between tabs
 nnoremap <C-Left> <ESC>:tabprevious<CR>
 nnoremap <C-Right> <ESC>:tabnext<CR>
@@ -8,59 +44,19 @@ nnoremap <A-Left> <ESC><C-W>h
 nnoremap <A-Right> <ESC><C-W>l
 nnoremap <A-Up> <ESC><C-W>k
 nnoremap <A-Down> <ESC><C-W>j
-map <Tab> <C-W>W:cd %:p:h<CR>:<CR>
 " F8 show all buffers
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
-"Define ROS rules
-set shiftwidth=2  " Two space indents
-set tabstop=2     " Tab key indents two spaces at a time
-set expandtab     " Use spaces when the <Tab> key is pressed
-
 " Toggle line numbers
-nmap <leader>n :set invnumber<CR>
-
-" Pathogen configuration
-call pathogen#infect()
-call pathogen#helptags() " generate helptags for everything in 'runtimepath'
-syntax on
-filetype plugin indent on
-
-"Snipets settings
-let g:UltiSnipsExpandTrigger="<F2>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+nmap <leader>n <ESC>:set invnumber<CR>
 
 " NERD tree
 map <F3> <ESC>:NERDTreeToggle<CR>
 " NERD Tree appears if no file was especified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-"Better whitespace disable/enable
-noremap <F4> <ESC>:ToggleWhitespace<CR>
-
-"Undotree
-nnoremap <F5> <ESC>:UndotreeToggle<CR>
-
-"Python rules
-"UTF-8
-set encoding=utf-8
-"Enable folding
-set foldmethod=indent
-set foldlevel=99
-" Enable folding with the spacebar
-nnoremap <space> za
-" Pep8 format configuration
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+let NERDTreeShowHidden=1
 
 " Remove trailing spaces
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -74,69 +70,14 @@ let g:tagbar_usearrows = 1
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <F6> <ESC>:TagbarToggle<CR>
 
-" CommandT settings
-noremap <leader>o <Esc>:CommandT<CR>
-noremap <leader>O <Esc>:CommandTFlush<CR>
-noremap <leader>m <Esc>:CommandTBuffer<CR>
-
-" Tag close only for the files that it works
-autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
-let g:ycm_register_as_syntastic_checker = 1 "default 1
-let g:Show_diagnostics_ui = 1 "default 1
-
-"YouCompleteMe settings
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_always_populate_location_list = 1 "default 0
-let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
-
-let g:ycm_complete_in_strings = 1 "default 1
-let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
-let g:ycm_path_to_python_interpreter = '' "default ''
-
-let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
-let g:ycm_server_log_level = 'info' "default info
-
-let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_whitelist = { '*': 1 }
-let g:ycm_key_invoke_completion = '<C-Space>'
-
-"Define syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-syntax enable
-syntax on
-let python_highlight_all=1
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <F9> <F9>:SyntasticToggleMode<CR> :SyntasticToggleMode<CR>
+"Define ROS rules
+set shiftwidth=2  " Two space indents
+set tabstop=2     " Tab key indents two spaces at a time
+set expandtab     " Use spaces when the <Tab> key is pressed
 
 "Indent guides color
-colorscheme default
-set background=dark
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
 
-highlight link Flake8_Error SpellCap
-highlight link Flake8_Warning SpellCap
-highlight Flake8_Complexity ctermfg=white ctermbg=DarkRed
-highlight Flake8_Naming ctermfg=white ctermbg=DarkRed
-highlight Flake8_PyFlake ctermfg=white ctermbg=DarkRed
-"Search hightlight 
-hi Search guibg=peru guifg=wheat
-hi Search cterm=NONE ctermfg=DarkYellow ctermbg=DarkBlue
-"Syntastic highlight
-highlight SyntasticError ctermfg=DarkBlue ctermbg=DarkRed
-highlight SyntasticWarning ctermfg=DarkBlue ctermbg=DarkYellow
-highlight SyntasticStyleError ctermfg=white ctermbg=DarkRed
-highlight SyntasticStyleWarning ctermfg=cyan ctermbg=DarkYellow
